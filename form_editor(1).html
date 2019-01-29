@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://multclip.ru/img/workshop/labs/lab001.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Редактирование формы</title>
+		<meta name="keywords" content="">
+		<script>
+			cntx='';
+			slc='<option selected value="v1">Вопрос 1</option><option value="v2">Вопрос 2</option><option value="v3">Вопрос 3</option>';
+			arr=['','<input type="text" placeholder="Текст - строка"/>','<textarea placeholder="Текст - абзац"></textarea>','<select size="3">'+slc+'</select>','<select size="3" multiple>'+slc+'</select>','<select>'+slc+'</select>'];
+			function creatIt(){
+								var fld=document.createElement('fieldset');
+				fld.innerHTML=cntx;
+				flds.appendChild(fld);
+			}
+			function delIt(selectObject){
+							selectObject.parentNode.remove();
+			}
+			function getField(selectObject){
+				var val = selectObject.value;
+				var id = selectObject.parentNode.id;
+				var prn = selectObject.parentNode;
+				selectObject.parentNode.getElementsByTagName('p')[0].innerHTML=arr[val];
+				return;
+			}
+			window.onload = function() {
+				cntx=document.getElementsByTagName('fieldset')[0].innerHTML;
+				}
+		</script>
+	</head>
+	
+	<body class="docs ">
+		<nav>
+		</nav>
+		<main>
+			<section>
+				<h2>Редактирование формы</h2>
+
+				<form action="http://multclip.ru/" method="post" enctype="multipart/form-data">
+					<p><input type="text" name="ttl" placeholder="Заголовок формы"></p>
+					<p><textarea name="dsc" placeholder="Описание формы"></textarea></p>
+					<div id="flds">
+						<fieldset id="fld_0">
+							<legend>Новое поле</legend>
+							<input type="text" name="ttlp" placeholder="Заголовок поля">
+							<select onchange="getField(this)">
+								<option value="0">Тип поля</option>
+								<option value="1">Текст - строка</option>
+								<option value="2">Текст - абзац</option>
+								<option value="3">Один из списка</option>
+								<option value="4">Несколько из списка</option>
+								<option value="5">Раскрывающийся список</option>
+							</select>
+							<button type="button" onclick="delIt(this)">X</button>
+							<p class="fld"><textarea placeholder="Текст - абзац"></textarea></p>
+							Обязательный вопрос <input type="checkbox" name="ness">
+						</fieldset>
+					<fieldset>
+							<legend>Новое поле</legend>
+							<input type="text" name="ttlp" placeholder="Заголовок поля">
+							<select onchange="getField(this)">
+								<option value="0">Тип поля</option>
+								<option value="1">Текст - строка</option>
+								<option value="2">Текст - абзац</option>
+								<option value="3">Один из списка</option>
+								<option value="4">Несколько из списка</option>
+								<option value="5">Раскрывающийся список</option>
+							</select>
+							<button type="button" onclick="delIt(this)">X</button>
+							<p class="fld"></p>
+							Обязательный вопрос <input type="checkbox" name="ness">
+						</fieldset></div>
+					<br><button type="button" onclick="creatIt()">+ Добавить</button>
+					<p>
+						<button type="reset" value="Reset">Закрыть</button> <button type="submit" value="Submit">Сохранить</button>
+					</p>
+				</form>
+			</section>
+			
+		</main>
+		<footer>
+		</footer>
+	
+</body></html>
